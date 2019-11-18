@@ -1,12 +1,12 @@
 import React from 'react';
 
- function Header() {
+function Header() {
   return (
     <header style={styleHeader}>
-      <h1>Todo List Application</h1>
+      <h1>GraphQL server and React+Apollo</h1>
     </header>
   )
-} 
+}
 
 const styleHeader = {
   background: '#fff',
