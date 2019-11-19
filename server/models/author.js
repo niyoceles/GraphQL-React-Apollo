@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 let authorSchema = new Schema({
@@ -9,4 +9,4 @@ let authorSchema = new Schema({
 const author = mongoose.model('Author', authorSchema);
 
 // Export the model
-module.exports = author;
+export default author;

@@ -1,22 +1,77 @@
 .App {
   text-align: center;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.navbar {
+width: 100%;
+height: 50px;
+margin: -8px 0 0px -8px;
+background-color:#0088cc;
+color:#fff;
+padding: 6px 10px 18px 6px;
+position: fixed;
 }
 
-.App-logo {
-  height: 40vmin;
+#book-list{
+  color: rgb(247, 91, 91);
+  font-size: 24px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+#book-list li {
+  list-style-type: none;
+  padding: 3px;
+  border: 1px solid;
+  margin-bottom: 1em;
+  margin-right: 70%;
 }
 
-.App-link {
-  color: #09d3ac;
+.book-details{
+  margin-top: -50%;
+  margin-left: 40%;
+  border:1px solid;
+  width: 50%;
+  /* position: fixed; */
+  background-color: rgb(245, 240, 240);
+  /* overflow-x: hidden; */
 }
+.update-book{
+  margin-top: -70%;
+  margin-left: 40%;
+  border:1px solid;
+  width: 50%;
+  /* position: fixed; */
+}
+
+/* #add-book {
+  width: 96%;
+} */
+
+.field {
+  display: inline-block;
+  font-size: 18px;
+  margin: 80px 8px 8px 8px;
+}
+
+.field input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  .field .btn-submit{
+    background-color: #45a049;
+    width: 45px;
+    height: 45px;
+    color: #fff;
+    font-size: 30px;
+    border:1px solid #45a049;
+    border-radius: 50%;
+  }
+
+  .field .btn-submit:hover {
+    background-color: #048a0b;
+  }

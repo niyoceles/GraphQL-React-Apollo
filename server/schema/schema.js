@@ -1,16 +1,15 @@
-const graphql = require('graphql');
-const _ = require('lodash');
-const Book = require('../models/book')
-const Author = require('../models/author')
+// import graphql from 'graphql';
+import Book from '../models/book';
+import Author from '../models/author';
 
-const {
+import {
   GraphQLSchema,
   GraphQLObjectType,
   GraphQLString,
   GraphQLList,
   GraphQLNonNull,
   // GraphQLInt,
-} = graphql;
+} from 'graphql';
 
 const BookType = new GraphQLObjectType({
   name: 'Book',
@@ -26,7 +25,8 @@ const BookType = new GraphQLObjectType({
         // return authors.find(author => author.id === book.authorId)
         return Author.findById(parent.authorId);
       }
-    }
+    },
+    image: { type: GraphQLNonNull(GraphQLString) }
   })
 });
 
@@ -99,17 +99,50 @@ const RootMutationType = new GraphQLObjectType({
       args: {
         name: { type: GraphQLNonNull(GraphQLString) },
         genre: { type: GraphQLNonNull(GraphQLString) },
-        authorId: { type: GraphQLNonNull(GraphQLString) }
+        authorId: { type: GraphQLNonNull(GraphQLString) },
+        image: { type: GraphQLNonNull(GraphQLString) }
       },
       resolve(parent, args) {
         let book = new Book({
           name: args.name,
           genre: args.genre,
-          authorId: args.authorId
+          authorId: args.authorId,
+          image: args.image
         });
         return book.save();
       }
     },
+    // Update Book
+    updateBook: {
+      type: BookType,
+      description: 'update Book',
+      args: {
+        id: { type: GraphQLNonNull(GraphQLString) },
+        name: { type: GraphQLNonNull(GraphQLString) },
+        genre: { type: GraphQLNonNull(GraphQLString) },
+        authorId: { type: GraphQLNonNull(GraphQLString) }
+      },
+      resolve(parent, args) {
+        // let book = new Book({
+        //   name: args.name,
+        //   genre: args.genre,
+        //   authorId: args.authorId
+        // });
+        return Book.findByIdAndUpdate(args.id, { $set: { name: args.name, genre: args.genre, authorId: args.authorId } })
+      }
+    },
+    // Delete Book
+    deleteBook: {
+      type: BookType,
+      description: 'Delete Book',
+      args: {
+        id: { type: GraphQLNonNull(GraphQLString) },
+      },
+      resolve(parent, args) {
+        return Book.findByIdAndRemove(args.id)
+      }
+    },
+    // Add Author
     addAuthor: {
       type: AuthorType,
       description: 'add Author',
@@ -133,4 +166,4 @@ const schema = new GraphQLSchema({
   mutation: RootMutationType
 });
 
-module.exports = schema;
+export default schema;

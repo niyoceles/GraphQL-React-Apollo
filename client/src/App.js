@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 
-import BookList from './components/bookList';
+import BookList from './components/BookList';
+import AddBook from './components/AddBook';
+
 import './App.css';
 
 // apollo client setup
@@ -16,8 +18,9 @@ class App extends Component {
   render() {
     return (
       <ApolloProvider client={client}>
-        <div className="App" >
-          <h1>This GraphQL and React Apollo Application</h1>
+        <div className="App">
+          <nav className="navbar"><h2>GraphQL and React Apollo Application</h2></nav>
+          <AddBook />
           <BookList />
         </div>
       </ApolloProvider>
