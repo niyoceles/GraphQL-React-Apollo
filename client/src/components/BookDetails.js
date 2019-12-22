@@ -33,9 +33,10 @@ class BookDetails extends Component {
     const { book } = this.props.data;
     if (book) {
       return (
-        <div className="book-details">
+        <div className="book-details" sticky="top">
           <Button color="success" onClick={this.toggleModalUpdating}>Update</Button>
           <Button color="danger" onClick={this.toggleModalDeleting}>Delete</Button>
+          <p className="book-image"><img src={book.image} alt="" /></p>
           <h2>Book Name: {book.name}</h2>
           <p>Book genre: {book.genre}</p>
           <p>Author: {book.author.name}</p>
@@ -59,7 +60,6 @@ class BookDetails extends Component {
               <DeleteBook bookId={this.props.bookId} />
             </ModalBody>
             <ModalFooter>
-              <Button onClick={this.toggleModalDeleting}>Delete</Button>{' '}
               <Button onClick={this.toggleModalDeleting}>Cancel</Button>
             </ModalFooter>
           </Modal>

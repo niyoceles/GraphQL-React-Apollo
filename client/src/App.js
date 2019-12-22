@@ -19,7 +19,7 @@ class App extends Component {
     return (
       <ApolloProvider client={client}>
         <div className="App">
-          <nav className="navbar"><h2>GraphQL and React Apollo Application</h2></nav>
+          <nav className="navbar" sticky="top"><h2>GraphQL and React Apollo Application</h2></nav>
           <AddBook />
           <BookList />
         </div>

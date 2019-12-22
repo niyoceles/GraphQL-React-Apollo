@@ -58,6 +58,7 @@ query($id: String){
       id
       name
     }
+    image
   }
 }
 `
